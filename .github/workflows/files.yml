@@ -42,7 +42,6 @@ jobs:
         env: 
           directories: ${{ env.directories }}
         run: |
-          root_dir=$(pwd)
           for directory in $directories
           do
             echo "Run Terraform on $directory"
@@ -52,6 +51,6 @@ jobs:
             terraform init
             terraform plan
             terraform apply
-            cd  $root_dir
+            cd  $GITHUB_WORKSPACE
           done
         
